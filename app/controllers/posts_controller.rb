@@ -15,7 +15,6 @@ def new
 end
 def create
    @post = current_user.posts.build(params.require(:post).permit(:title, :body))
-  raise # this will short-circuit the method
   authorize @post
   if @post.save
     flash[:notice] = "Post was saved."
