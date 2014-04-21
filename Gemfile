@@ -44,6 +44,8 @@ gem 'devise'
 gem 'figaro'
 gem 'pundit'
 gem 'redcarpet'
+gem 'will_paginate', '~> 3.0.5'
+
 
 
 # Use ActiveModel has_secure_password

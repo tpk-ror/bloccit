@@ -20,6 +20,10 @@
   <div class="col-md-4">
     <% if policy(Topic.new).create? %>
       <%= link_to "New Topic", new_topic_path, class: 'btn btn-success' %>
-    <% end %>
+     <% end %>
+    <%= will_paginate @topics %>
+  </div>
+  <div class="col-md-4">
+    <% if policy(Topic.new).create? %>
   </div>
 </div>
