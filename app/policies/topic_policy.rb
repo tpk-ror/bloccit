@@ -13,4 +13,10 @@ class TopicPolicy < ApplicationPolicy
   def update?
     create?
   end
+
+#do i need this? It isn't really clear
+  def destroy?
+    update?
+  end
+
 end
