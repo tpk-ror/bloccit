@@ -1,6 +1,6 @@
 # config/routes.rb
 
-BlocReddit::Application.routes.draw do
+Bloccit::Application.routes.draw do
 
   resources :posts, only: [:index]
   resources :topics do
