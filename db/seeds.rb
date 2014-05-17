@@ -42,6 +42,34 @@ end
   end
 end
 
+5.times do
+    topic = topics.first
+    post = Post.create(
+      user: user,
+      topic: topic,
+      title: Faker::Lorem.sentence, 
+      body: Faker::Lorem.paragraph)
+    # set the created_at to a time within the past year
+    post.update_attribute(:created_at, Time.now - rand(600..31536000))
+
+    topics.rotate!
+  end
+end
+
+# Create Comments
+100.times do
+  comment = Comment.create(
+    user: users.sample,
+    post: posts.sample,
+    body: Faker::Lorem.paragraph
+  )
+
+  # set the created_at to a time within the past year
+  comment.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)
+end
+
+
+
 user = User.first
 user.skip_reconfirmation!
 user.update_attributes(email: 'tomkarels@gmail.com', password: 'asdfasdf', password_confirmation: 'asdfasdf')
