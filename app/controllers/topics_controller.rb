@@ -45,7 +45,7 @@ class TopicsController < ApplicationController
       render :edit
     end
   end
-  def destroy
+ def destroy
     @topic = Topic.find(params[:id])
     name = @topic.name
 
@@ -58,7 +58,6 @@ class TopicsController < ApplicationController
       render :show
     end
   end
-end
 
 
 private
