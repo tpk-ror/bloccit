@@ -11,7 +11,6 @@ Bloccit::Application.routes.draw do
       get '/down-vote' => 'votes#down_vote', as: :down_vote
     end
   end
-  end
 
   devise_for :users
   resources :users, only: [:show, :index, :update]
