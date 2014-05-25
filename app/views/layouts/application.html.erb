@@ -1,15 +1,13 @@
-<!-- app/views/layouts/application.html.erb -->
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Bloccit</title>
+    <title>Bloc Reddit</title>
     <%= stylesheet_link_tag    "application", media: "all" %>
-    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
   <body>
     <div class="container">
+
       <ul class="nav nav-tabs">
         <li><%= link_to "Bloccit", root_path %></li>
         <li><%= link_to "About", about_path %></li>
@@ -17,17 +15,23 @@
         <li><%= link_to "Popular", posts_path %></li>
         <li><%= link_to "Users", users_path %></li>
         <div class="pull-right user-info">
-           <% if current_user %>
-             <%= image_tag(current_user.avatar.tiny.url) if current_user.avatar? %>
-              Hello <%= link_to (current_user.name || current_user.email), current_user %>!
-              <%= link_to edit_user_registration_path, class: 'btn btn-primary btn-sm' do %>
-              <span class="glyphicon glyphicon-user"></span>
-              <% end %>
 
-<%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-primary btn-sm' do %>
-   <span class="glyphicon glyphicon-log-out"></span>
-    <% end %>
+          <% if current_user %>
+            <%= image_tag(current_user.avatar.tiny.url) if current_user.avatar? %>
+            
+            Hello <%= link_to (current_user.name || current_user.email), current_user %>!
+
+            <%= link_to edit_user_registration_path, class: 'btn btn-primary btn-sm' do %>
+              <span class="glyphicon glyphicon-user"></span> <% end %>
+          
+            <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-primary btn-sm' do %>
+              <span class="glyphicon glyphicon-log-out"></span>
+            <% end %>
+            
           <% else %>
+            <%= link_to "Sign In", new_user_session_path %> or
+            <%= link_to "Sign Up", new_user_registration_path %>
+          <% end %>
         </div>
       </ul>
 
@@ -51,5 +55,6 @@
       <%= yield %>
     </div>
 
+    <%= javascript_include_tag "application" %>
   </body>
 </html>
