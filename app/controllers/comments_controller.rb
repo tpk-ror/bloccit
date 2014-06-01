@@ -1,9 +1,9 @@
 class CommentsController < ApplicationController
   respond_to :html, :js
 
-  def create
-    @topic = Topic.find( params[:topic_id] )
-    @post = @topic.posts.find( params[:post_id] )
+ def create
+    @topic = Topic.find(params[:topic_id])
+    @post = @topic.posts.find(params[:post_id])
     @comments = @post.comments
 
     @comment = current_user.comments.build( comment_params )
@@ -49,5 +49,4 @@ class CommentsController < ApplicationController
       :post_id
     )
   end
-
 end
